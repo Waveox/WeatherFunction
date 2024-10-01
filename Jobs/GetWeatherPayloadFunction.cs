@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using WeatherFunction.Services;
 
 namespace WeatherFunction;
-//GET /api/payload/{logId}
+
 public class GetWeatherPayloadFunction
 {
     private readonly IWeatherService _weatherService;

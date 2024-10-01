@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using WeatherFunction.Services;
 
 namespace WeatherFunction;
-//GET /api/logs?from=2023-01-01T00:00:00Z&to=2023-01-31T23:59:59Z
+
 public class GetWeatherLogsFunction
 {
     private readonly IWeatherService _weatherService;
