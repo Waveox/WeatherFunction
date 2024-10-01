@@ -12,9 +12,10 @@ public class WeatherService : IWeatherService
     private readonly ITableStorageService _tableStorageService;
     private readonly ILogger<WeatherService> _logger;
     private readonly WeatherFunctionOptions _options;
-    private static readonly HttpClient _httpClient = new HttpClient();
-    public WeatherService(IBlobStorageService blobStorageService, ITableStorageService tableStorageService, IOptions<WeatherFunctionOptions> options, ILogger<WeatherService> logger)
+    private readonly IHttpClientFactory _httpClientFactory;
+    public WeatherService(IBlobStorageService blobStorageService, ITableStorageService tableStorageService, IOptions<WeatherFunctionOptions> options, IHttpClientFactory httpClientFactory, ILogger<WeatherService> logger)
     {
+        _httpClientFactory = httpClientFactory;
         _blobStorageService = blobStorageService;
         _tableStorageService = tableStorageService;
         _options = options.Value;
@@ -29,7 +30,9 @@ public class WeatherService : IWeatherService
 
         try
         {
-            var weatherData = await _httpClient.GetFromJsonAsync<WeatherData>(apiUrl);
+            var httpClient = _httpClientFactory.CreateClient(); 
+
+            var weatherData = await httpClient.GetFromJsonAsync<WeatherData>(apiUrl);
 
             if (weatherData == null)
             {

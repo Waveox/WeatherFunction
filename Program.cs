@@ -28,6 +28,7 @@ var host = new HostBuilder()
     .ConfigureServices((context, services) =>
     {
         services.Configure<WeatherFunctionOptions>(context.Configuration);
+        services.AddHttpClient();
         services.AddScoped<IBlobStorageService, BlobStorageService>();
         services.AddScoped<ITableStorageService, TableStorageService>();
         services.AddScoped<IWeatherService, WeatherService>();
