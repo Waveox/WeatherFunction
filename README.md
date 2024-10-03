@@ -1,7 +1,7 @@
 # Weather-Function
 This repository contains a description and implementation of the programming task used to evaluate software developers.
 
-## Task 1
+## Task
 
 Must use:
 * Azure Function (Cloud/Local)
